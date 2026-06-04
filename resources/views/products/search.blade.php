@@ -28,11 +28,11 @@
     </aside>
 
     <div class="wrap_img">
-        @foreach($products as $product)
+        @foreach($products as $item)
         <div class="card">
-            <img class="img" src="{{ asset($product->image) }}"><br>
-            {{$product->name}}
-            ￥{{$product->price}} 
+            <img class="img" src="{{ asset($item->image) }}"><br>
+            {{$item->name}}
+            ￥{{$item->price}} 
         </div>
         @endforeach
     </div>

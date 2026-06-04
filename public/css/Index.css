@@ -56,3 +56,12 @@ body {
     display: flex;
 }
 
+.page{
+    display: flex;
+    justify-content: center;
+}
+.page .ui.pagination.menu .active.item {
+    background-color: #ff9f43;
+    color: #ffffff;
+    pointer-events: none;
+}
