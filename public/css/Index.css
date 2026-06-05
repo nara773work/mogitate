@@ -141,3 +141,7 @@ body {
 .span{
     font-size: 12px;
 }
+.detail{
+    border:none;
+    background: transparent;
+}

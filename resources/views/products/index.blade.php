@@ -15,7 +15,9 @@
         <aside class="aside">
             <h1>商品一覧</h1>
 
-            <form action="search" method="get" id="search-form">
+            <form action="/products/search" method="get">
+            <form action="" method="get">
+
                 <input class="search" type="text" name="name" placeholder="商品名で検索"><br>
                 <button class="submit" type="submit">検索</button><br>
 
@@ -49,7 +51,11 @@
     <div class="wrap_img">
         @foreach($products as $product)
         <div class="card">
-            <img class="img" src="{{ asset($product->image) }}"><br>
+            <form action="/products/detail/{{$product->id}}">
+                <button type="submit" name="id" value="{{$product->id}}" class="detail">
+                <img class="img" src="{{ asset($product->image) }}"><br>
+                </button>
+            </form>
             {{$product->name}}
             ￥{{$product->price}} 
         </div>

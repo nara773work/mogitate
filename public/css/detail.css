@@ -1,0 +1,83 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+}
+
+.header {
+    font-size: 20px;
+    color: rgb(255, 207, 102);
+    font-family: 'Alfa Slab One', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow:
+        0px 1px 0px yellow,
+        -1px 1px 0px yellow,
+        1px -1px 0px yellow,
+        -1px -1px 0px yellow;
+    background-color: white;
+    margin-top: 0;
+    padding: 10px;
+}
+.wrap{
+    display: flex;
+}
+.img {
+    width: 400px;
+}
+.circle_sentence{
+    border-radius: 6px;
+    border: 1px solid darkgray;
+    padding-left: 5px;  
+    height: 250px;
+    background-color: white;
+    width: 800px;
+    font-size: 15px;
+}
+.circle_sentence_wrap{
+    margin-top: 80px;
+}
+.all{
+    margin: 50px auto;
+    width: 800px;
+}
+.circle_wrap{
+    margin-left: 20px;
+}
+.wrap_button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:30px;
+    margin-top: 30px;
+}
+.wrap_return_update{
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 30px;
+}
+.back{
+    font-size: 20px;
+    width: 250px;
+    height: 60px;
+}
+.update{
+    font-size: 20px;
+    width: 250px;
+    height: 60px;
+    background-color: rgb(236, 173, 55);
+    border-color: rgb(236, 173, 55);
+    border-radius: 6px;
+}
+.text{
+        height: 40px;
+        border-radius: 6px;
+        border: 1px solid darkgray;
+        padding-left: 10px;
+        margin-bottom: 40px;
+        background-color: white;
+        width: 360px;
+        line-height: 40px;
+        font-size: 15px;
+}

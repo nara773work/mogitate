@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-use App\Http\Controllers\IndexController;
+use App\Http\Controllers\ProductController;
 
-Route::get('products', [IndexController::class, 'index']);
-Route::get('/search', [IndexController::class, 'search']);
+Route::get('products', [ProductController::class, 'index']);
+Route::get('/products/search', [ProductController::class, 'search']);
+Route::get('/products/detail/{productId}',[ProductController::class,'show']);
+Route::put('/products/{productId}/update',[ProductController::class,'update']);
+Route::delete('/products/{productId}/delete',[ProductController::class,'delete']);
