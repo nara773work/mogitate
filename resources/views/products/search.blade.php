@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/Index.css') }}">
-    <title>ProductsIndex</title>
+    <title>ProductsI\ndex</title>
 </head>
 <body>
     <header class="header">
@@ -45,22 +45,27 @@
             </form>
         </aside>
     </div>
-
-    <div class="wrap_img">
-        @foreach($products as $product)
-        <div class="card">
-            <img class="img" src="{{ asset($product->image) }}"><br>
-            {{$product->name}}
-            ￥{{$product->price}} 
-        </div>
-        @endforeach
+<div class="wrap_img">
+@foreach($products as $product)
+    <div class="card">
+    <img class="img" src="{{ asset($product->image) }}"><br>
+        {{$product->name}}
+        ￥{{$product->price}} 
     </div>
-</div>
-    
+    @endforeach
+</div> 
 <div class="page">
     {{ $products->links('pagination::semantic-ui') }}
 </div>
+
 <script>
+window.addEventListener('DOMContentLoaded', () => {
+    const hasSort = @json(request()->has('sort'));  
+    if (hasSort) {
+        toggleModal(true);
+    }
+});
+
 function toggleModal(show) {
     const modal = document.getElementById('sort-modal');
     if (show) {

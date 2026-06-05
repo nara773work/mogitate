@@ -2,9 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use Illuminate\Database\Seeder;
 use App\Models\Season;
+use Illuminate\Database\Seeder;
 
 class SeasonSeeder extends Seeder
 {
@@ -14,16 +13,16 @@ class SeasonSeeder extends Seeder
     public function run(): void
     {
         Season::create([
-            "name"=>"春",
+            'name' => '春',
         ]);
         Season::create([
-            "name"=>"夏",
+            'name' => '夏',
         ]);
         Season::create([
-            "name"=>"秋",
+            'name' => '秋',
         ]);
         Season::create([
-            "name"=>"冬",
+            'name' => '冬',
         ]);
     }
 }

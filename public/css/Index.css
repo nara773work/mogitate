@@ -56,3 +56,88 @@ body {
     display: flex;
 }
 
+.page{
+    display: flex;
+    justify-content: center;
+}
+.page .ui.pagination.menu .active.item {
+    background-color: #ff9f43;
+    color: #ffffff;
+    pointer-events: none;
+}
+.open {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 250px;
+    left: 30px;
+    width: 180px;
+    height: 180px;
+}
+
+.overlay.is-open {
+    display: flex;
+}
+
+.content {
+    background-color: whitesmoke;
+    padding: 5px;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.sort-option {
+    display: block;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.sort-option input {
+    display: none;
+}
+
+.sort-option span {
+    display: block;
+    padding: 10px;
+    border: 1px solid rgb(255, 184, 53);
+    border-radius: 40px;
+    font-weight: bold;
+    color: #555;
+    transition: all 0.2s;
+}
+
+.sort-option input:checked+span {
+    background-color: rgb(236, 173, 55);
+    border-color: rgb(236, 173, 55);
+    color: white;
+}
+
+.cancel {
+    margin: auto;
+    padding: auto;
+    background: none;
+    border: none;
+    color: rgb(255, 184, 53);
+    cursor: pointer;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 184, 53);
+    width: 20px;
+    height: 20px;
+    margin-right: 12px;
+}
+.cancel_modal{
+    display: flex;
+}
+.span{
+    font-size: 12px;
+}
