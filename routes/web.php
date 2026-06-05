@@ -18,4 +18,6 @@ Route::get('/', function () {
 });
 
 use App\Http\Controllers\IndexController;
-Route::get('products',[IndexController::class,'index']);
+
+Route::get('products', [IndexController::class, 'index']);
+Route::get('/search', [IndexController::class, 'search']);
