@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             SeasonSeeder::class,
-            ProductSeeder::class,       
+            ProductSeeder::class,
         ]);
     }
 }
