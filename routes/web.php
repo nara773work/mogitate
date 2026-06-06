@@ -22,5 +22,8 @@ use App\Http\Controllers\ProductController;
 Route::get('products', [ProductController::class, 'index']);
 Route::get('/products/search', [ProductController::class, 'search']);
 Route::get('/products/detail/{productId}',[ProductController::class,'show']);
+Route::get('/products/register',[ProductController::class,'register']);
+Route::post('/products/store',[ProductController::class,'store']);
 Route::put('/products/{productId}/update',[ProductController::class,'update']);
 Route::delete('/products/{productId}/delete',[ProductController::class,'delete']);
+

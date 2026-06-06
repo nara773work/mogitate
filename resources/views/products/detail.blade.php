@@ -11,7 +11,7 @@
         mogitate
     </header>
     <div class="all">
-        <form action="/products/{{$product->id}}/update" method="post">
+        <form action="/products/{{$product->id}}/update" method="post" enctype="multipart/form-data">
             @csrf
             @method('PUT') 
             <input type="hidden" name="id" value="{{ $product->id }}">
@@ -44,7 +44,7 @@
                 <div class="circle_wrap">
                     季節<br>
                     @foreach($seasons as $season)
-                        <input type="checkbox" value="{{ $season->id }}"  name ="season_id" {{$product->seasons->contains('id', $season->id) ? 'checked' : ''}}>
+                        <input type="checkbox" value="{{ $season->id }}"  name ="season_ids[]" {{$product->seasons->contains('id', $season->id) ? 'checked' : ''}}>
                             
                         {{ $season->name }}
                     @endforeach   
