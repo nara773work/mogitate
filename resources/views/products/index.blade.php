@@ -46,20 +46,27 @@
                 </div>
             </form>
         </aside>
-    </div>
-
-    <div class="wrap_img">
-        @foreach($products as $product)
-        <div class="card">
-            <form action="/products/detail/{{$product->id}}">
-                <button type="submit" name="id" value="{{$product->id}}" class="detail">
-                <img class="img" src="{{ asset($product->image) }}"><br>
-                </button>
-            </form>
-            {{$product->name}}
-            ￥{{$product->price}} 
-        </div>
-        @endforeach
+    </div>   
+    <div>
+        <div style="position: relative; display: inline-block; width: 100%;">
+            <div style="position: absolute; right: 60px;">
+            <a class="add_product" href="/products/register">商品を追加</a>
+            </div>
+        
+            <div class="wrap_img">
+                @foreach($products as $product)
+                <div class="card">
+                    <form action="/products/detail/{{$product->id}}">
+                    <button type="submit" name="id" value="{{$product->id}}" class="detail">
+                    <img class="img" src="{{ asset( $product->image) }}"><br>
+                    {{$product->name}}
+                    ￥{{$product->price}}
+                    </button>
+                </form>
+                </div>
+                @endforeach
+            </div>
+        </div>    
     </div>
 </div>
     

@@ -4,7 +4,6 @@ body {
     padding: 0;
     background-color: whitesmoke;
 }
-
 .header{
     font-size: 20px;
     color:rgb(255, 207, 102);
@@ -19,18 +18,16 @@ body {
     background-color: white;
     margin-top: 0;
     padding: 10px;
+    margin-bottom: 10px;
 }
-
 .aside{
-    margin: 0 30px;
+    margin: 0px 30px;
 }
-
 .search{
     height: 30px;
     border-radius: 20px;
     border-color: darkgray;
 }
-
 .submit{
     background-color: rgb(236, 173, 55);
     width: 180px;
@@ -38,16 +35,14 @@ body {
     margin: 10px 0;
     border-color: rgb(236, 173, 55);
 }
-
 .img{
-    width: 300px;
+    width: 500px;
 }
-
 .wrap_img{
     display: flex;
     flex-wrap: wrap;
+    margin-top: 10px;
 }
-
 .card{
     margin: 20px;
 }
@@ -144,4 +139,8 @@ body {
 .detail{
     border:none;
     background: transparent;
+}
+.add_product{
+    display: flex;
+    flex-wrap: wrap;
 }

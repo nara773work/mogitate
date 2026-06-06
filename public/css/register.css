@@ -1,0 +1,71 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background-color: whitesmoke;
+    font-size: 20px;
+}
+
+.header {
+    font-size: 20px;
+    color: rgb(255, 207, 102);
+    font-family: 'Alfa Slab One', serif;
+    font-style: italic;
+    font-weight: bold;
+    text-shadow:
+        0px 1px 0px yellow,
+        -1px 1px 0px yellow,
+        1px -1px 0px yellow,
+        -1px -1px 0px yellow;
+    background-color: white;
+    margin-top: 0;
+    padding: 10px;
+}
+.wrap_return_update {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 10 auto;
+}
+.update {
+    font-size: 20px;
+    width: 250px;
+    height: 60px;
+    background-color: rgb(236, 173, 55);
+    border-color: rgb(236, 173, 55);
+    border-radius: 6px;
+}
+.back {
+    font-size: 20px;
+    width: 250px;
+    height: 60px;
+}
+.main{
+    margin: 20px auto;
+    width: 600px;
+}
+.textarea{
+    height: 120px;
+    width: 800px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.text{
+    height: 30px;
+    width: 600px;
+    margin-bottom: 40px;
+    margin-top: 10px;
+    font-size: 15px;
+}
+.required{
+    background-color: red;
+    color:white;
+    font-size: 15px;
+}
+.error{
+    color: red;
+    font-size: 14px;
+    display: block;
+}
