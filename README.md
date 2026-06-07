@@ -99,7 +99,13 @@ Webサーバ:Nginx
 ![ER図](/ER.drawio.png)
 
 ## URL
-http://localhost/
+一覧画面
+http://localhost/products
+
+詳細画面
+http://localhost/products/detail/{productId}
+
+
 
 ## 作成者
 奈良 那々美

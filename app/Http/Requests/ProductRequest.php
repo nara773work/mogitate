@@ -32,7 +32,7 @@ class ProductRequest extends FormRequest
 
         if ($this->isMethod('put')) {
             $rules['image'] = 'filled|image|mimes:png,jpeg';
-        } 
+        }
 
         return $rules;
     }
@@ -43,8 +43,8 @@ class ProductRequest extends FormRequest
             'name.required' => '商品名を入力してください',
             'price.required' => '値段を入力してください',
             'price.integer' => '数値で入力してください',
-            'price.max' => '0∼10000円以内で入力してください',
-            'price.min' => '0∼10000円以内で入力してください',
+            'price.max' => '0~10000円以内で入力してください',
+            'price.min' => '0~10000円以内で入力してください',
             'image.filled' => '画像を登録してください',
             'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
             'season_ids.required' => '季節を選択してください',

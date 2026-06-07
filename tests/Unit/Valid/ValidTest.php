@@ -2,15 +2,12 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Http\UploadedFile;
-
 use App\Http\Requests\ProductRequest;
 use App\Http\Requests\RegisterRequest;
-use App\Models\Season;
-use App\Models\Product;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Validator;
+use Tests\TestCase;
 
 class ValidTest extends TestCase
 {
@@ -18,171 +15,170 @@ class ValidTest extends TestCase
      * A basic unit test example.
      */
     use RefreshDatabase;
+
     protected $seed = true;
 
-    public function test_UpdateRequest(): void
+    public function test_update_request(): void
     {
-        $request = new ProductRequest();
-        $rules = $request->rules(); 
+        $request = new ProductRequest;
+        $rules = $request->rules();
 
-        $validData=[
-            "name" => "test",
-            "price"=> 120,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $validData = [
+            'name' => 'test',
+            'price' => 120,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $validator = Validator::make($validData, $request->rules(),method_exists($request, 'messages') ? $request->messages() : [],);
+        $validator = Validator::make($validData, $request->rules(), method_exists($request, 'messages') ? $request->messages() : []);
         $this->assertTrue($validator->passes());
 
-        $invalidData=[
-            "name" => "",
-            "price"=> 120,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => '',
+            'price' => 120,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-         $invalidData=[
-            "name" => "test",
-            "price"=> 12000,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => 12000,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> -1,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => -1,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> "いち",
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => 'いち',
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> 120,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => 120,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> 12000,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>""
+        $invalidData = [
+            'name' => 'test',
+            'price' => 12000,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => '',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
     }
 
+    public function test_register_request(): void
+    {
+        $request = new RegisterRequest;
+        $rules = $request->rules();
 
-
-    public function test_RegisterRequest(): void{
-        $request = new RegisterRequest();
-        $rules = $request->rules(); 
-        
-        $validData=[
-            "name" => "test",
-            "price"=> 120,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $validData = [
+            'name' => 'test',
+            'price' => 120,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $validator = Validator::make($validData, $request->rules(),method_exists($request, 'messages') ? $request->messages() : [],);
+        $validator = Validator::make($validData, $request->rules(), method_exists($request, 'messages') ? $request->messages() : []);
         $this->assertTrue($validator->passes());
 
-        $invalidData=[
-            "name" => "",
-            "price"=> 120,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => '',
+            'price' => 120,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-         $invalidData=[
-            "name" => "test",
-            "price"=> 12000,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => 12000,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> -1,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => -1,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> "いち",
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => 'いち',
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> 120,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[],
-            "description"=>"test"
+        $invalidData = [
+            'name' => 'test',
+            'price' => 120,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [],
+            'description' => 'test',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
 
-        $invalidData=[
-            "name" => "test",
-            "price"=> 12000,
-            "image" => UploadedFile::fake()->image('test.png'),
-            "season_ids"=>[1,3],
-            "description"=>""
+        $invalidData = [
+            'name' => 'test',
+            'price' => 12000,
+            'image' => UploadedFile::fake()->image('test.png'),
+            'season_ids' => [1, 3],
+            'description' => '',
         ];
-        $invalidValidator = Validator::make($invalidData, $request->rules(), 
-            method_exists($request, 'messages') ? $request->messages() : [],);
+        $invalidValidator = Validator::make($invalidData, $request->rules(),
+            method_exists($request, 'messages') ? $request->messages() : [], );
         $this->assertFalse($invalidValidator->passes());
-    }  
-
+    }
 }

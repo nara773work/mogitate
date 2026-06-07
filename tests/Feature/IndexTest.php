@@ -2,20 +2,18 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-
-use App\Models\Season;
 use App\Models\Product;
+use App\Models\Season;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class IndexTest extends TestCase
 {
     /**
      * A basic feature test example.
      */
-
     use RefreshDatabase;
+
     protected $seed = true;
 
     public function test_index(): void
@@ -30,17 +28,18 @@ class IndexTest extends TestCase
         $response->assertViewHas('products', function ($products) {
             return $products->count() === 6;
         });
-        
+
         $product = Product::first();
 
         if ($product) {
             $response->assertSee($product->image);
             $response->assertSee($product->name);
             $response->assertSee($product->price);
-            }
+        }
     }
 
-    public function test_search(): void{
+    public function test_search(): void
+    {
         $products = Product::all();
         $response = $this->get('products/search');
 
@@ -49,15 +48,15 @@ class IndexTest extends TestCase
         $response->assertViewHas('products');
     }
 
-    public function test_detail(): void{
+    public function test_detail(): void
+    {
         $products = Product::first();
         $seasons = Season::all();
-        $response = $this->get('products/detail/'. $products->id);
+        $response = $this->get('products/detail/'.$products->id);
 
         $response->assertOk();
         $response->assertViewIs('products.detail');
         $response->assertViewHas('product');
         $response->assertViewHas('seasons');
     }
-
 }

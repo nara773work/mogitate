@@ -2,12 +2,9 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
-use Tests\TestCase;
-
-use App\Models\Season;
 use App\Models\Product;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class DeleteTest extends TestCase
 {
@@ -15,6 +12,7 @@ class DeleteTest extends TestCase
      * A basic feature test example.
      */
     use RefreshDatabase;
+
     protected $seed = true;
 
     public function test_delete(): void
