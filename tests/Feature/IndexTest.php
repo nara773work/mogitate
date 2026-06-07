@@ -29,6 +29,15 @@ class IndexTest extends TestCase
             return $products->count() === 6;
         });
 
+        $response = $this->get('products?page=2');
+        $response->assertViewHas('products', function ($products) {
+            return $products->count() === 4;
+        });
+
+    }
+
+    public function test_index_show(): void{
+        $response = $this->get('products');
         $product = Product::first();
 
         if ($product) {
@@ -36,6 +45,7 @@ class IndexTest extends TestCase
             $response->assertSee($product->name);
             $response->assertSee($product->price);
         }
+
     }
 
     public function test_search(): void

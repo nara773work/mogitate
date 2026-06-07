@@ -24,7 +24,7 @@ class ProductController extends Controller
         $sort = $request->input('sort', '');
 
         if ($sort === 'clear') {
-            $sort = '';
+            return redirect('/products');
         }
 
         $query = Product::query();

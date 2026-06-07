@@ -20,10 +20,8 @@
 
                 <input class="search" type="text" name="name" placeholder="商品名で検索"><br>
                 <button class="submit" type="submit">検索</button><br>
-
-                <button type="button" class="open" onclick="toggleModal(true)">
-                    並び替え
-                </button>
+                価格順に表示<br>
+                <input type="" class="open" placeholder="価格で並び替え" onclick="toggleModal(true)">
 
                 <div id="sort-modal" class="overlay" onclick="toggleModal(false)">
                     <div class="content" onclick="event.stopPropagation()">
@@ -71,7 +69,7 @@
 </div>
     
 <div class="page">
-    {{ $products->links('pagination::semantic-ui') }}
+    {{ $products->appends(request()->query())->links('pagination::semantic-ui') }}
 </div>
 <script>
 function toggleModal(show) {
@@ -86,6 +84,13 @@ function toggleModal(show) {
 function submitWithModal() {
     document.getElementById('search-form').submit();
 }
+
+window.addEventListener('DOMContentLoaded', () => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if ( urlParams.has('sort')) {
+        toggleModal(true);
+    }
+});
 </script>
 </body>
 </html>

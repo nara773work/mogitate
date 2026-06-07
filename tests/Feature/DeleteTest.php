@@ -18,11 +18,20 @@ class DeleteTest extends TestCase
     public function test_delete(): void
     {
         $product = Product::first();
+        $seasonId = $product->seasons()->first()?->id;
 
         $response = $this->delete('/products/'.$product->id.'/delete');
 
         $response->assertStatus(302);
 
+        $response->assertRedirect('/products');
+
         $this->assertDatabaseMissing('products', ['id' => $product->id]);
-    }
+
+        if ($seasonId) {
+            $this->assertDatabaseMissing('product_season', [
+                'product_id' => $product->id,
+                'season_id' => $seasonId
+            ]);
+    }}
 }

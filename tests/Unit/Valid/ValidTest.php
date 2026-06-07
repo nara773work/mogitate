@@ -21,6 +21,8 @@ class ValidTest extends TestCase
     public function test_update_request(): void
     {
         $request = new ProductRequest;
+        $request->setMethod('PUT');
+        
         $rules = $request->rules();
 
         $validData = [

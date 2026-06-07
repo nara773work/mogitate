@@ -16,14 +16,14 @@ class ModelTest extends TestCase
 
     protected $seed = true;
 
-    public function test_prducts_belongs_to_seasons(): void
+    public function test_products_belongs_to_seasons(): void
     {
         $product = Product::first();
 
         $this->assertCount(2, $product->seasons);
     }
 
-    public function test_seasons_belongs_to_prducts(): void
+    public function test_seasons_belongs_to_products(): void
     {
         $season = Season::first();
 
