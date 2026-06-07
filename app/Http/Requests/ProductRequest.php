@@ -22,14 +22,19 @@ class ProductRequest extends FormRequest
      */
     public function rules(): array
     {
-        return [
+        $rules = [
             'name' => 'required',
             'price' => 'required|integer|min:0|max:10000',
-            'image' => 'required|image|mimes:png,jpeg',
             'season_ids' => 'required|array',
             'season_ids.*' => 'integer|exists:seasons,id',
             'description' => 'required|max:120',
         ];
+
+        if ($this->isMethod('put')) {
+            $rules['image'] = 'filled|image|mimes:png,jpeg';
+        } 
+
+        return $rules;
     }
 
     public function messages(): array
@@ -40,7 +45,7 @@ class ProductRequest extends FormRequest
             'price.integer' => '数値で入力してください',
             'price.max' => '0∼10000円以内で入力してください',
             'price.min' => '0∼10000円以内で入力してください',
-            'image.required' => '画像を登録してください',
+            'image.filled' => '画像を登録してください',
             'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
             'season_ids.required' => '季節を選択してください',
             'description.required' => '商品説明を入力してください',

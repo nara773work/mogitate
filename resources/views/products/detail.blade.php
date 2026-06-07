@@ -44,7 +44,7 @@
                 <div class="circle_wrap">
                     季節<br>
                     @foreach($seasons as $season)
-                        <input type="checkbox" value="{{ $season->id }}"  name ="season_ids[]" {{$product->seasons->contains('id', $season->id) ? 'checked' : ''}}>
+                        <input type="checkbox" value="{{ $season->id }}" name="season_ids[]" {{ $product->seasons->contains($season->id) ? 'checked' : '' }}>
                             
                         {{ $season->name }}
                     @endforeach   

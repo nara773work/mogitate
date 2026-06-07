@@ -15,7 +15,7 @@ class ProductController extends Controller
         $seasons = Season::all();
         $products = Product::with('seasons')->paginate(6);
 
-        return view('/products/index', compact('products'));
+        return view('products/index', compact('products'));
     }
 
     public function search(Request $request)
@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $products = $query->paginate(6);
 
-        return view('/products/index', compact('products'));
+        return view('products/index', compact('products'));
     }
 
     public function show(Request $request, $id)
@@ -77,8 +77,8 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
-        $image = $request->file('image')->store('strang', 'public');
-        $imageUrl = $request->image;
+        $imageUrl = $product->image;
+
         if ($request->hasFile('image')) {
             $image = $request->file('image')->store('strang', 'public');
             $imageUrl = \Storage::url($image);
