@@ -34,8 +34,6 @@ DB_PASSWORD=password
 //sail artisan key:generate
 
 7.初期データを投入する
-//sail artisan migrate --seed
-既存のデータをリセットする場合は以下のコマンドを実行する
 //sail artisan migrate:fresh --seed
 
 8.シンボリックリンクを作成する
