@@ -59,7 +59,7 @@ class ProductController extends Controller
     public function store(RegisterRequest $request)
     {
         $seasons = Season::all();
-        $image = $request->file('image')->store('strang', 'public');
+        $image = $request->file('image')->store('strage', 'public');
         $imageUrl = \Storage::url($image);
         $product = Product::create([
             'name' => $request->name,
@@ -67,6 +67,7 @@ class ProductController extends Controller
             'image' => $imageUrl,
             'description' => $request->description,
         ]);
+
         if ($request->has('season_ids')) {
             $product->seasons()->attach($request->season_ids);
         }
@@ -80,15 +81,17 @@ class ProductController extends Controller
         $imageUrl = $product->image;
 
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('strang', 'public');
+            $image = $request->file('image')->store('strage', 'public');
             $imageUrl = \Storage::url($image);
         }
+
         $product->update([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
             'image' => $imageUrl,
             'description' => $request->input('description'),
         ]);
+
         if ($request->has('season_ids')) {
             $product->seasons()->sync((array) $request->input('season_ids'));
         }

@@ -36,7 +36,8 @@ class IndexTest extends TestCase
 
     }
 
-    public function test_index_show(): void{
+    public function test_index_show(): void
+    {
         $response = $this->get('products');
         $product = Product::first();
 

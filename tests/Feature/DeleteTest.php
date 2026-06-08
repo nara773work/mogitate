@@ -31,7 +31,8 @@ class DeleteTest extends TestCase
         if ($seasonId) {
             $this->assertDatabaseMissing('product_season', [
                 'product_id' => $product->id,
-                'season_id' => $seasonId
+                'season_id' => $seasonId,
             ]);
-    }}
+        }
+    }
 }

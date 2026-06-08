@@ -22,7 +22,7 @@ class ValidTest extends TestCase
     {
         $request = new ProductRequest;
         $request->setMethod('PUT');
-        
+
         $rules = $request->rules();
 
         $validData = [
