@@ -15,7 +15,7 @@ class ProductController extends Controller
         $seasons = Season::all();
         $products = Product::with('seasons')->paginate(6);
 
-        return view('/products/index', compact('products'));
+        return view('products/index', compact('products'));
     }
 
     public function search(Request $request)
@@ -24,7 +24,7 @@ class ProductController extends Controller
         $sort = $request->input('sort', '');
 
         if ($sort === 'clear') {
-            $sort = '';
+            return redirect('/products');
         }
 
         $query = Product::query();
@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $products = $query->paginate(6);
 
-        return view('/products/index', compact('products'));
+        return view('products/index', compact('products'));
     }
 
     public function show(Request $request, $id)
@@ -59,7 +59,7 @@ class ProductController extends Controller
     public function store(RegisterRequest $request)
     {
         $seasons = Season::all();
-        $image = $request->file('image')->store('strang', 'public');
+        $image = $request->file('image')->store('strage', 'public');
         $imageUrl = \Storage::url($image);
         $product = Product::create([
             'name' => $request->name,
@@ -67,6 +67,7 @@ class ProductController extends Controller
             'image' => $imageUrl,
             'description' => $request->description,
         ]);
+
         if ($request->has('season_ids')) {
             $product->seasons()->attach($request->season_ids);
         }
@@ -77,18 +78,20 @@ class ProductController extends Controller
     public function update(ProductRequest $request, $id)
     {
         $product = Product::findOrFail($id);
-        $image = $request->file('image')->store('strang', 'public');
-        $imageUrl = $request->image;
+        $imageUrl = $product->image;
+
         if ($request->hasFile('image')) {
-            $image = $request->file('image')->store('strang', 'public');
+            $image = $request->file('image')->store('strage', 'public');
             $imageUrl = \Storage::url($image);
         }
+
         $product->update([
             'name' => $request->input('name'),
             'price' => $request->input('price'),
             'image' => $imageUrl,
             'description' => $request->input('description'),
         ]);
+
         if ($request->has('season_ids')) {
             $product->seasons()->sync((array) $request->input('season_ids'));
         }

@@ -14,7 +14,7 @@ mogitate-app
     composer create-project laravel/laravel:^10.0 mogitate-app
 
 3.作成したフォルダに移動する
-//cd mogitate
+//cd mogitate-app
 
 4.Laravel sailをインストールする
 //docker run --rm \
@@ -88,6 +88,9 @@ DB_PASSWORD=password
 既存のデータをリセットする場合は以下のコマンドを実行する
 //sail artisan migrate:fresh --seed
 
+13.シンボリックリンクを作成する
+//sail artisan storage:link
+
 ## 使用技術
 OS:Windows11
 PHP:8.2
@@ -99,7 +102,13 @@ Webサーバ:Nginx
 ![ER図](/ER.drawio.png)
 
 ## URL
-http://localhost/
+一覧画面
+http://localhost/products
+
+詳細画面
+http://localhost/products/detail/{productId}
+
+
 
 ## 作成者
 奈良 那々美
